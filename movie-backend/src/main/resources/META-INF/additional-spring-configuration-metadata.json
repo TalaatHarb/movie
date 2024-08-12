@@ -1,0 +1,17 @@
+{"properties": [
+  {
+    "name": "logging.level[net.talaatharb]",
+    "type": "java.lang.String",
+    "description": "A description for 'logging.level[net.talaatharb]'"
+  },
+  {
+    "name": "logging.level[org.springframework.web]",
+    "type": "java.lang.String",
+    "description": "A description for 'logging.level[org.springframework.web]'"
+  },
+  {
+    "name": "spring.jackson.mapper[DEFAULT_VIEW_INCLUSION]",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.jackson.mapper[DEFAULT_VIEW_INCLUSION]'"
+  }
+]}

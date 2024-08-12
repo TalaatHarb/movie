@@ -1,0 +1,38 @@
+server:
+  port: ${PORT:8080}
+  shutdown: graceful
+
+logging:
+  level[net.talaatharb]: DEBUG
+  level[org.springframework.web]: DEBUG
+
+spring:
+  datasource:
+    url: jdbc:h2:file:./db/movie-backend;AUTO_SERVER=TRUE;
+    username: sa
+    password:
+  jackson:
+    mapper[DEFAULT_VIEW_INCLUSION]: true
+  jpa:
+    open-in-view: false
+    database: default
+    hibernate:
+      ddl-auto: update
+  application:
+    name: movie-backend
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+      probes:
+        enabled: true 

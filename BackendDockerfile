@@ -1,0 +1,19 @@
+FROM maven:3.9.8-amazoncorretto-21 as maven
+WORKDIR /usr/src/app
+
+RUN mkdir movie-backend
+
+COPY movie-backend/pom.xml ./movie-backend/pom.xml
+
+WORKDIR /usr/src/app/movie-backend
+
+RUN mvn dependency:go-offline > /dev/null
+
+COPY ./movie-backend ./movie-backend
+
+RUN mvn clean compile package > /dev/null
+
+FROM openjdk:21-jdk-slim
+COPY --from=maven /usr/src/app/movie-backend/target/movie-backend-*.jar app.jar
+ENV JAVA_OPTS="-Xms512m -Xmx1024m" 
+CMD ["sh", "-c", "java $JAVA_OPTS -jar app.jar"]
