@@ -9,7 +9,7 @@ WORKDIR /usr/src/app/movie-backend
 
 RUN mvn dependency:go-offline > /dev/null
 
-COPY ./movie-backend ./movie-backend
+COPY ./movie-backend .
 
 RUN mvn clean compile package > /dev/null
 
