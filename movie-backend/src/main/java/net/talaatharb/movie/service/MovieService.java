@@ -31,7 +31,7 @@ public class MovieService {
 	private final MovieRepository movieRepository;
 
 	public MovieDTO details(Long id) {
-		Optional<Movie> movieOptional = findMovieById(id);
+		Optional<Movie> movieOptional = movieRepository.findById(id);
 		if (movieOptional.isPresent()) {
 			return movieMapper.fromEntityToDTO(movieOptional.get());
 		}
@@ -56,13 +56,10 @@ public class MovieService {
 	}
 
 	@Transactional
-	public Optional<Movie> findMovieById(Long id) {
-		return movieRepository.findById(id);
-	}
-
-	@Transactional
 	public MovieDTO saveMovie(MovieDTO movieDTO) {
-		return movieMapper.fromEntityToDTO(movieRepository.save(movieMapper.fromDTOToEntity(movieDTO)));
+		Movie movieEntity = movieMapper.fromDTOToEntity(movieDTO);
+		movieEntity = movieRepository.save(movieEntity);
+		return movieMapper.fromEntityToDTO(movieEntity);
 	}
 
 }
