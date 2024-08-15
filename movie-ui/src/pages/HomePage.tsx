@@ -23,12 +23,15 @@ export default function HomePage() {
   const searchTerm: string | undefined | null = searchParams.has("searchTerm") ? searchParams.get("searchTerm") : undefined;
   return (
     <>
-      <header>
+      <header className='d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none'>
+        <Link to='/' ><h1>Movies</h1></Link>
+      </header>
+      <section>
         <form className="d-flex">
           <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" name='searchTerm' />
           <button className="btn btn-primary" type="submit">Search</button>
         </form>
-      </header>
+      </section>
       <section className='pt-5'><Pagination page={page} totalPages={totalPages} searchTerm={searchTerm} /></section>
       <main>
         <div className="album py-5">
@@ -39,7 +42,7 @@ export default function HomePage() {
                 results.map(movie => {
                   return (
                     <Link className="col" key={movie.id} to={`/movies/${movie.id}`}>
-                      <MovieCard id={movie.id} title={movie.title} imagePosterLink={movie.posterPath ? movie.posterPath : 'https://upload.wikimedia.org/wikipedia/commons/4/4b/Empty_frame.jpg'} />
+                      <MovieCard id={movie.id} title={movie.title} imagePosterLink={movie.posterPath} />
                     </Link>
                   );
                 })
