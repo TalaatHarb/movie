@@ -16,10 +16,10 @@ const JsonTable = ({ data }: any) => {
         </tr>
       </thead>
       <tbody>
-        {nonNullEntries.map(([key, value], index) => (
-          <tr key={index}>
+        {nonNullEntries.map(([key, value], _) => (
+          <tr key={key}>
             <th scope="row">{key}</th>
-            <td>{typeof value === 'object' ? JSON.stringify(value, null, 2) : value.toString()}</td>
+            <td>{typeof value === 'object' ? JSON.stringify(value, null, 2) : (value as any).toString()}</td>
           </tr>
         ))}
       </tbody>

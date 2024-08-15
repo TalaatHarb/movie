@@ -17,7 +17,7 @@ export default function MovieDetailsPage() {
       <header className='d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none'>
         <Link to='/' ><h1>Movies</h1></Link>
       </header>
-      <section style={{maxWidth: '400px'}}>
+      <section style={{maxWidth: '500px'}}>
         <MovieCard id={movie.id} imagePosterLink={movie.posterPath} title={movie.title} />
       </section>
       <main className="mt-5">
