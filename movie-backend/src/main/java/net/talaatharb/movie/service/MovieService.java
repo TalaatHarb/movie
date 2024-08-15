@@ -49,8 +49,8 @@ public class MovieService {
 				}).getBody();
 	}
 
-	public MoviePageDTO<MovieSummaryDTO> search(String searchTerm) {
-		return restTemplate.exchange(BASE_API + "/movie/popular?api_key=" + API_KEY + "&query=" + searchTerm,
+	public MoviePageDTO<MovieSummaryDTO> search(String searchTerm, Long page) {
+		return restTemplate.exchange(BASE_API + "/search/movie?api_key=" + API_KEY + "&query=" + searchTerm + "&page=" + page,
 				HttpMethod.GET, null, new ParameterizedTypeReference<MoviePageDTO<MovieSummaryDTO>>() {
 				}).getBody();
 	}
