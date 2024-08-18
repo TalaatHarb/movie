@@ -58,8 +58,8 @@ public class MovieService {
 	@Transactional
 	public MovieDTO saveMovie(MovieDTO movieDTO) {
 		Movie movieEntity = movieMapper.fromDTOToEntity(movieDTO);
-		movieEntity = movieRepository.save(movieEntity);
-		return movieMapper.fromEntityToDTO(movieEntity);
+		movieRepository.save(movieEntity);
+		return movieDTO;
 	}
 
 }
